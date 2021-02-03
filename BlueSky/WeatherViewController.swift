@@ -4,10 +4,18 @@ class WeatherViewController: UIViewController {
     
     let backgroundView = UIImageView()
     
+    let rootStackView = UIStackView()
+    
+    /// Search Area
     let searchStackView = UIStackView()
     let locationButton = UIButton()
     let searchButton = UIButton()
     let searchTextField = UITextField()
+    
+    /// Weather Area
+    let conditionImageView = UIImageView()
+    let cityLabel = UILabel()
+    let temperatureLabel = UILabel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +34,11 @@ extension WeatherViewController {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.image = UIImage(named:"background")
         backgroundView.contentMode = .scaleToFill
+        
+        rootStackView.translatesAutoresizingMaskIntoConstraints = false
+        rootStackView.axis = .vertical
+        rootStackView.alignment = .trailing
+        rootStackView.spacing = 10
         
         searchStackView.translatesAutoresizingMaskIntoConstraints = false
         searchStackView.spacing = 8
@@ -48,17 +61,36 @@ extension WeatherViewController {
         searchTextField.textAlignment = .right
         searchTextField.borderStyle = .roundedRect
         searchTextField.backgroundColor = .systemFill
+        
+        /// Weather Image
+        conditionImageView.translatesAutoresizingMaskIntoConstraints = false
+        conditionImageView.image = UIImage(systemName: "sun.max")
+        conditionImageView.tintColor = .label
+        
+        /// Temp & City Labels
+        temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
+        temperatureLabel.text = "100ºC"
+        temperatureLabel.font = UIFont.systemFont(ofSize: 80)
+        cityLabel.translatesAutoresizingMaskIntoConstraints = false
+        cityLabel.text = "Lansing"
+        cityLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
     }
     
     func layout(){
         
         view.addSubview(backgroundView)
+        view.addSubview(rootStackView)
         view.addSubview(searchStackView)
         view.addSubview(locationButton)
         view.addSubview(searchButton)
         view.addSubview(searchTextField)
 
-        
+        rootStackView.addArrangedSubview(searchStackView) /// Stack view embedded in another UIStackView
+        rootStackView.addArrangedSubview(conditionImageView)
+        rootStackView.addArrangedSubview(temperatureLabel)
+        rootStackView.addArrangedSubview(cityLabel)
+        rootStackView.addArrangedSubview(temperatureLabel)
+         
         searchStackView.addArrangedSubview(locationButton)
         searchStackView.addArrangedSubview(searchTextField)
         searchStackView.addArrangedSubview(searchButton)
@@ -69,16 +101,20 @@ extension WeatherViewController {
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            /// Using safeAreaLayoutGuide to account for landscape & portrait modes
-            searchStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchStackView.trailingAnchor, multiplier: 1),
-
+            /// Settings applied to stack views to avoid adding individual constraints to child UI elements
+            rootStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            rootStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: rootStackView.trailingAnchor, multiplier: 1),
+            searchStackView.widthAnchor.constraint(equalTo: rootStackView.widthAnchor),
+            
             locationButton.widthAnchor.constraint(equalToConstant: 40),
             locationButton.heightAnchor.constraint(equalToConstant: 40),
 
             searchButton.widthAnchor.constraint(equalToConstant: 40),
             searchButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            conditionImageView.heightAnchor.constraint(equalToConstant: 120),
+            conditionImageView.widthAnchor.constraint(equalToConstant: 120)
             
         ])
         
