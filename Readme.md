@@ -20,4 +20,7 @@ multipe screen sizes with programatically defined layouts. The anchoring system
 (top/leading/trailing/bottom) in autolayout is key here. 
 - Since storyboards show up as an .xml file during the code review process, programatic layouts are much 
 easier to collaborate on. 
-
+- Stack views are Apple's way of streamlining a layout for a collection of views (for a column or row). 
+This allows us to define fewer constraints, and get the same results. UIStackView works perfectly for 
+certain elements of BlueSky. Not to mention, this leads to fewer lines of code and therefore a more
+efficient development workflow.

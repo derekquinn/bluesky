@@ -4,6 +4,7 @@ class WeatherViewController: UIViewController {
     
     let backgroundView = UIImageView()
     
+    let searchStackView = UIStackView()
     let locationButton = UIButton()
     let searchButton = UIButton()
     let searchTextField = UITextField()
@@ -25,6 +26,10 @@ extension WeatherViewController {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.image = UIImage(named:"background")
         backgroundView.contentMode = .scaleToFill
+        
+        searchStackView.translatesAutoresizingMaskIntoConstraints = false
+        searchStackView.spacing = 8
+//        searchStackView.axis = .horizontal /// Default is horizontal, this is not needed
         
         /// Location Button
         locationButton.translatesAutoresizingMaskIntoConstraints = false
@@ -48,9 +53,15 @@ extension WeatherViewController {
     func layout(){
         
         view.addSubview(backgroundView)
+        view.addSubview(searchStackView)
         view.addSubview(locationButton)
         view.addSubview(searchButton)
         view.addSubview(searchTextField)
+
+        
+        searchStackView.addArrangedSubview(locationButton)
+        searchStackView.addArrangedSubview(searchTextField)
+        searchStackView.addArrangedSubview(searchButton)
         
         NSLayoutConstraint.activate([
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -59,21 +70,17 @@ extension WeatherViewController {
             backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             /// Using safeAreaLayoutGuide to account for landscape & portrait modes
-            locationButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            locationButton.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
+            searchStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchStackView.trailingAnchor, multiplier: 1),
+
             locationButton.widthAnchor.constraint(equalToConstant: 40),
             locationButton.heightAnchor.constraint(equalToConstant: 40),
-            
-            searchButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchButton.trailingAnchor, multiplier: 1),
+
             searchButton.widthAnchor.constraint(equalToConstant: 40),
             searchButton.heightAnchor.constraint(equalToConstant: 40),
             
-            searchTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            searchTextField.leadingAnchor.constraint(equalToSystemSpacingAfter: locationButton.trailingAnchor, multiplier: 1),
-            searchButton.leadingAnchor.constraint(equalToSystemSpacingAfter: searchTextField.trailingAnchor, multiplier: 1)
-            
         ])
-   
+        
     }
 }
