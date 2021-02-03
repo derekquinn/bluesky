@@ -10,7 +10,8 @@
 - Stack Views
 - Protocol-Delegate Pattern
 - JSON Parsing with Codable
-- Swift Unit Testing
+- Swift Unit Testing _TDD!!_
+- Styling text with NSAttributedString _easy and efficent!_ 
 
 ## Benefits of the techniques used here
 
