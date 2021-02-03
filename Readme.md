@@ -1,9 +1,7 @@
 # Blue Sky
 ## iOS Weather Application
 
-### Blue Sky is a weather application built using best practices with UIKit and XCode 12.  In order to 
-demonstrate scalable, reusable code that is easily reviewed by peers, this application does not use
-storyboards.  
+### Blue Sky is a weather application built using best practices with Swift 5, UIKit and XCode 12.  In order to demonstrate scalable, reusable code that is easily reviewed by peers. 
 
 ## What's Inside?
 
