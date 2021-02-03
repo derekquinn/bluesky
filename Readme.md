@@ -19,6 +19,9 @@
 simple linear algebra that brings views to life. This is how the application can be rendered on 
 multipe screen sizes with programatically defined layouts. The anchoring system 
 (top/leading/trailing/bottom) in autolayout is key here. 
+- The protocol-delegate pattern is common with `UIKit` because it sovles a probelm with communication.  Classes use protocols
+to broadcast events.  Delegates receive communications from the protocol. In doing so, this reduces coupling between classes. It 
+does a really good job of separating responsibility between generating an event and reacting to it. 
 - Since storyboards show up as an .xml file during the code review process, programatic layouts are much 
 easier to collaborate on. 
 - Stack views are Apple's way of streamlining a layout for a collection of views (for a column or row). 
