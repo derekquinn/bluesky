@@ -25,3 +25,6 @@ easier to collaborate on.
 This allows us to define fewer constraints, and get the same results. UIStackView works perfectly for 
 certain elements of BlueSky. Not to mention, this leads to fewer lines of code and therefore a more
 efficient development workflow.
+- Although minimally used here, because the scope of this app is limited, `NSAttributedString` is a welcome
+addition to BlueSky.  The city, state and temperature labels on screen are a key part of the UI. This technique
+allows us to apply different styles to each part of the string (for example 10ºC). 
