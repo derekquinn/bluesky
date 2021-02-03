@@ -7,6 +7,7 @@
 
 - Vectorized assets
 - No storyboards! 
+- Stack Views
 
 ## Benefits of the techniques used here
 
