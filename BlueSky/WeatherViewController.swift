@@ -55,8 +55,8 @@ extension WeatherViewController {
             locationButton.widthAnchor.constraint(equalToConstant: 40),
             locationButton.heightAnchor.constraint(equalToConstant: 40),
             
-            searchButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor), //// Pin to the top
-            searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            searchButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: searchButton.trailingAnchor, multiplier: 1),
             searchButton.widthAnchor.constraint(equalToConstant: 40),
             searchButton.heightAnchor.constraint(equalToConstant: 40),
         ])
