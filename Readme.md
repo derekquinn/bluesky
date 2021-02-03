@@ -8,6 +8,9 @@
 - Vectorized assets
 - No storyboards! 
 - Stack Views
+- Protocol-Delegate Pattern
+- JSON Parsing with Codable
+- Swift Unit Testing
 
 ## Benefits of the techniques used here
 
