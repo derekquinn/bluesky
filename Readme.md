@@ -60,7 +60,7 @@ JSON is **decoded** into a swift construct that we can access within our codebas
 ### What is a Unit Test? 
 - Unit tests are small method-level tests that developers write to prove to themselves that the code is working as expected. 
 
-### Advantages of Unit Testing
+#### Advantages of Unit Testing
 1. **Instant Feedback** - when a developer makes changes to the code, a failing (or passing) test allows us to know instantly if changes have broken some piece of the codebase. 
 1. **Lower the cost of regression testing** - Instead of testing the entire app, we can focus on testing new features and leave the rest to automation. Of course, this depends on well written tests covering a large portion of the codebase.
 1. **Decrease Debugging Time** - When a unit test fails, we know exactly where to look for a problem. No more firing up the debugger, and stepping through thousands of lines of code.
