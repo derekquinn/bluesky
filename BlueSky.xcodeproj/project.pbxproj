@@ -7,22 +7,53 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C401DDA425CB7D1600F86C93 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C401DDA325CB7D1600F86C93 /* WeatherService.swift */; };
+		C401DDAD25CB85B500F86C93 /* BlueSkyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C401DDAC25CB85B500F86C93 /* BlueSkyTests.swift */; };
+		C401DDB725CB86C900F86C93 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C401DDB625CB86C900F86C93 /* Weather.swift */; };
+		C401DDBB25CB880000F86C93 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C401DDBA25CB880000F86C93 /* WeatherData.swift */; };
+		C401DDC125CB8CC900F86C93 /* WeatherDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C401DDC025CB8CC900F86C93 /* WeatherDataTest.swift */; };
+		C401DDC625CB8E1E00F86C93 /* OpenWeatherResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = C401DDC525CB8E1E00F86C93 /* OpenWeatherResponse.json */; };
 		C41B512525CB464E0050259D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B512425CB464E0050259D /* AppDelegate.swift */; };
-		C41B512925CB464E0050259D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B512825CB464E0050259D /* ViewController.swift */; };
+		C41B512925CB464E0050259D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B512825CB464E0050259D /* WeatherViewController.swift */; };
 		C41B512E25CB46500050259D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C41B512D25CB46500050259D /* Assets.xcassets */; };
 		C41B513125CB46500050259D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C41B512F25CB46500050259D /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C401DDAF25CB85B500F86C93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C41B511925CB464E0050259D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C41B512025CB464E0050259D;
+			remoteInfo = BlueSky;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		C401DDA325CB7D1600F86C93 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		C401DDAA25CB85B500F86C93 /* BlueSkyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueSkyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C401DDAC25CB85B500F86C93 /* BlueSkyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlueSkyTests.swift; sourceTree = "<group>"; };
+		C401DDAE25CB85B500F86C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C401DDB625CB86C900F86C93 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
+		C401DDBA25CB880000F86C93 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		C401DDC025CB8CC900F86C93 /* WeatherDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataTest.swift; sourceTree = "<group>"; };
+		C401DDC525CB8E1E00F86C93 /* OpenWeatherResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = OpenWeatherResponse.json; sourceTree = "<group>"; };
 		C41B512125CB464E0050259D /* BlueSky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueSky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41B512425CB464E0050259D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C41B512825CB464E0050259D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C41B512825CB464E0050259D /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
 		C41B512D25CB46500050259D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C41B513025CB46500050259D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C41B513225CB46500050259D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		C401DDA725CB85B500F86C93 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C41B511E25CB464E0050259D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,10 +64,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C401DDA025CB7CA100F86C93 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C401DDA325CB7D1600F86C93 /* WeatherService.swift */,
+				C401DDB625CB86C900F86C93 /* Weather.swift */,
+				C401DDBA25CB880000F86C93 /* WeatherData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C401DDA125CB7CB400F86C93 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C401DDA225CB7CBC00F86C93 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C41B512825CB464E0050259D /* WeatherViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		C401DDAB25CB85B500F86C93 /* BlueSkyTests */ = {
+			isa = PBXGroup;
+			children = (
+				C401DDC425CB8DE900F86C93 /* Mock API Responses */,
+				C401DDAC25CB85B500F86C93 /* BlueSkyTests.swift */,
+				C401DDAE25CB85B500F86C93 /* Info.plist */,
+				C401DDC025CB8CC900F86C93 /* WeatherDataTest.swift */,
+			);
+			path = BlueSkyTests;
+			sourceTree = "<group>";
+		};
+		C401DDC425CB8DE900F86C93 /* Mock API Responses */ = {
+			isa = PBXGroup;
+			children = (
+				C401DDC525CB8E1E00F86C93 /* OpenWeatherResponse.json */,
+			);
+			name = "Mock API Responses";
+			sourceTree = "<group>";
+		};
 		C41B511825CB464E0050259D = {
 			isa = PBXGroup;
 			children = (
 				C41B512325CB464E0050259D /* BlueSky */,
+				C401DDAB25CB85B500F86C93 /* BlueSkyTests */,
 				C41B512225CB464E0050259D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -45,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				C41B512125CB464E0050259D /* BlueSky.app */,
+				C401DDAA25CB85B500F86C93 /* BlueSkyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -52,8 +129,10 @@
 		C41B512325CB464E0050259D /* BlueSky */ = {
 			isa = PBXGroup;
 			children = (
+				C401DDA225CB7CBC00F86C93 /* Controller */,
+				C401DDA125CB7CB400F86C93 /* View */,
+				C401DDA025CB7CA100F86C93 /* Model */,
 				C41B512425CB464E0050259D /* AppDelegate.swift */,
-				C41B512825CB464E0050259D /* ViewController.swift */,
 				C41B512D25CB46500050259D /* Assets.xcassets */,
 				C41B512F25CB46500050259D /* LaunchScreen.storyboard */,
 				C41B513225CB46500050259D /* Info.plist */,
@@ -64,6 +143,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		C401DDA925CB85B500F86C93 /* BlueSkyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C401DDB125CB85B500F86C93 /* Build configuration list for PBXNativeTarget "BlueSkyTests" */;
+			buildPhases = (
+				C401DDA625CB85B500F86C93 /* Sources */,
+				C401DDA725CB85B500F86C93 /* Frameworks */,
+				C401DDA825CB85B500F86C93 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C401DDB025CB85B500F86C93 /* PBXTargetDependency */,
+			);
+			name = BlueSkyTests;
+			productName = BlueSkyTests;
+			productReference = C401DDAA25CB85B500F86C93 /* BlueSkyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		C41B512025CB464E0050259D /* BlueSky */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C41B513525CB46500050259D /* Build configuration list for PBXNativeTarget "BlueSky" */;
@@ -90,6 +187,10 @@
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
+					C401DDA925CB85B500F86C93 = {
+						CreatedOnToolsVersion = 12.0.1;
+						TestTargetID = C41B512025CB464E0050259D;
+					};
 					C41B512025CB464E0050259D = {
 						CreatedOnToolsVersion = 12.0.1;
 					};
@@ -109,11 +210,20 @@
 			projectRoot = "";
 			targets = (
 				C41B512025CB464E0050259D /* BlueSky */,
+				C401DDA925CB85B500F86C93 /* BlueSkyTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		C401DDA825CB85B500F86C93 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C401DDC625CB8E1E00F86C93 /* OpenWeatherResponse.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C41B511F25CB464E0050259D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -126,16 +236,36 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		C401DDA625CB85B500F86C93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C401DDC125CB8CC900F86C93 /* WeatherDataTest.swift in Sources */,
+				C401DDAD25CB85B500F86C93 /* BlueSkyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		C41B511D25CB464E0050259D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C41B512925CB464E0050259D /* ViewController.swift in Sources */,
+				C401DDB725CB86C900F86C93 /* Weather.swift in Sources */,
+				C401DDBB25CB880000F86C93 /* WeatherData.swift in Sources */,
+				C41B512925CB464E0050259D /* WeatherViewController.swift in Sources */,
+				C401DDA425CB7D1600F86C93 /* WeatherService.swift in Sources */,
 				C41B512525CB464E0050259D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C401DDB025CB85B500F86C93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C41B512025CB464E0050259D /* BlueSky */;
+			targetProxy = C401DDAF25CB85B500F86C93 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C41B512F25CB46500050259D /* LaunchScreen.storyboard */ = {
@@ -149,6 +279,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		C401DDB225CB85B500F86C93 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CH8XJS4375;
+				INFOPLIST_FILE = BlueSkyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.derekquinn.BlueSkyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlueSky.app/BlueSky";
+			};
+			name = Debug;
+		};
+		C401DDB325CB85B500F86C93 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = CH8XJS4375;
+				INFOPLIST_FILE = BlueSkyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.derekquinn.BlueSkyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlueSky.app/BlueSky";
+			};
+			name = Release;
+		};
 		C41B513325CB46500050259D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -306,6 +476,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		C401DDB125CB85B500F86C93 /* Build configuration list for PBXNativeTarget "BlueSkyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C401DDB225CB85B500F86C93 /* Debug */,
+				C401DDB325CB85B500F86C93 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C41B511C25CB464E0050259D /* Build configuration list for PBXProject "BlueSky" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
