@@ -5,6 +5,8 @@ class WeatherViewController: UIViewController {
     
     let locationManager = CLLocationManager()
     
+    var weatherService = WeatherService()
+    
     let backgroundView = UIImageView()
     
     let rootStackView = UIStackView()
@@ -38,6 +40,7 @@ extension WeatherViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+        weatherService.delegate = self
     }
     
     func style(){
@@ -177,7 +180,7 @@ extension WeatherViewController: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         if let city = searchTextField.text {
-           // weatherService.fetchWeather(cityName: city)
+            weatherService.fetchWeather(cityName: city)
         }
         searchTextField.text = ""
     }
@@ -195,7 +198,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
-          //  weatherService.fetchWeather(latitude: lat, longitude: lon)
+            //weatherService.fetchWeather(latitude: lat, longitude: lon)
         }
     }
     
@@ -204,3 +207,16 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
 }
 
+// Mark: - WeatherServiceDelegate
+
+extension WeatherViewController: WeatherServiceDelegate {
+    
+    func didFetchWeather(_ weatherService: WeatherService, weather: Weather) {
+        /// Update UI when weather is retreived
+        cityLabel.text = weather.cityName
+        temperatureLabel.attributedText = makeTemperatureText(with: weather.temperatureString)
+    }
+    
+    
+    
+}

@@ -33,3 +33,12 @@ efficient development workflow.
 - Although minimally used here, because the scope of this app is limited, `NSAttributedString` is a welcome
 addition to BlueSky.  The city, state and temperature labels on screen are a key part of the UI. This technique
 allows us to apply different styles to each part of the string (for example 10ºC). 
+
+
+## How it all comes together
+
+- We define a `WeatherService` with a function called `fetchWeather()` which communicates via a delegate.
+In order to accomplish this, we define a protocol called `didFetchWeateher` (implemented in `WeatherViewController`)
+Second, we have to register a callback (delegate) for the protocol. This way, when `fetchWeather()` is called, 
+it has an instance (reference) via the delegate.  It can pass the weather object, and therefore update the UI.
+
