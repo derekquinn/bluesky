@@ -35,7 +35,7 @@ addition to BlueSky.  The city, state and temperature labels on screen are a key
 allows us to apply different styles to each part of the string (for example 10ºC). 
 
 
-## How it all comes together
+## The Protocol-Delegate relationship in this app
 
 - We define a `WeatherService` with a function called `fetchWeather()` which communicates via a delegate.
 In order to accomplish this, we define a protocol called `didFetchWeateher` (implemented in `WeatherViewController`)
