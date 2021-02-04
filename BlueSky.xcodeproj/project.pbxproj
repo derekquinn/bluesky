@@ -11,6 +11,8 @@
 		C401DDAD25CB85B500F86C93 /* BlueSkyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C401DDAC25CB85B500F86C93 /* BlueSkyTests.swift */; };
 		C401DDB725CB86C900F86C93 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C401DDB625CB86C900F86C93 /* Weather.swift */; };
 		C401DDBB25CB880000F86C93 /* WeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C401DDBA25CB880000F86C93 /* WeatherData.swift */; };
+		C401DDC125CB8CC900F86C93 /* WeatherDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C401DDC025CB8CC900F86C93 /* WeatherDataTest.swift */; };
+		C401DDC625CB8E1E00F86C93 /* OpenWeatherResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = C401DDC525CB8E1E00F86C93 /* OpenWeatherResponse.json */; };
 		C41B512525CB464E0050259D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B512425CB464E0050259D /* AppDelegate.swift */; };
 		C41B512925CB464E0050259D /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C41B512825CB464E0050259D /* WeatherViewController.swift */; };
 		C41B512E25CB46500050259D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C41B512D25CB46500050259D /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 		C401DDAE25CB85B500F86C93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C401DDB625CB86C900F86C93 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		C401DDBA25CB880000F86C93 /* WeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherData.swift; sourceTree = "<group>"; };
+		C401DDC025CB8CC900F86C93 /* WeatherDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDataTest.swift; sourceTree = "<group>"; };
+		C401DDC525CB8E1E00F86C93 /* OpenWeatherResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = OpenWeatherResponse.json; sourceTree = "<group>"; };
 		C41B512125CB464E0050259D /* BlueSky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueSky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C41B512425CB464E0050259D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C41B512825CB464E0050259D /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
@@ -88,10 +92,20 @@
 		C401DDAB25CB85B500F86C93 /* BlueSkyTests */ = {
 			isa = PBXGroup;
 			children = (
+				C401DDC425CB8DE900F86C93 /* Mock API Responses */,
 				C401DDAC25CB85B500F86C93 /* BlueSkyTests.swift */,
 				C401DDAE25CB85B500F86C93 /* Info.plist */,
+				C401DDC025CB8CC900F86C93 /* WeatherDataTest.swift */,
 			);
 			path = BlueSkyTests;
+			sourceTree = "<group>";
+		};
+		C401DDC425CB8DE900F86C93 /* Mock API Responses */ = {
+			isa = PBXGroup;
+			children = (
+				C401DDC525CB8E1E00F86C93 /* OpenWeatherResponse.json */,
+			);
+			name = "Mock API Responses";
 			sourceTree = "<group>";
 		};
 		C41B511825CB464E0050259D = {
@@ -206,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C401DDC625CB8E1E00F86C93 /* OpenWeatherResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C401DDC125CB8CC900F86C93 /* WeatherDataTest.swift in Sources */,
 				C401DDAD25CB85B500F86C93 /* BlueSkyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
