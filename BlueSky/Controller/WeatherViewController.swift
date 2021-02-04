@@ -3,162 +3,150 @@ import CoreLocation
 
 class WeatherViewController: UIViewController {
     
-    let locationManager = CLLocationManager()
-    
     var weatherService = WeatherService()
-    
-    let backgroundView = UIImageView()
+    let locationManager = CLLocationManager()
     
     let rootStackView = UIStackView()
     
-    /// Search Area
+    // UIElements: Search
     let searchStackView = UIStackView()
     let locationButton = UIButton()
-    let searchButton = UIButton()
     let searchTextField = UITextField()
+    let searchButton = UIButton()
     
-    /// Weather Area
+    // UIElements: Weather conditions
     let conditionImageView = UIImageView()
-    let cityLabel = UILabel()
     let temperatureLabel = UILabel()
+    let cityLabel = UILabel()
+
+    // UI Element: Background image
+    let backgroundView = UIImageView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setup()
-        style()
-        layout()
-        
+        setupDelegates()
+        setStyles()
+        configureLayout()
     }
+ 
 }
-
 
 extension WeatherViewController {
     
-    func setup(){
-        searchTextField.delegate = self
+    func setupDelegates() {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+        
         weatherService.delegate = self
+        searchTextField.delegate = self
     }
     
-    func style(){
-        /// Background view
-        backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.image = UIImage(named:"background")
-        backgroundView.contentMode = .scaleToFill
-        
+    func setStyles() {
         rootStackView.translatesAutoresizingMaskIntoConstraints = false
         rootStackView.axis = .vertical
         rootStackView.alignment = .trailing
         rootStackView.spacing = 10
-        
+
+        // Search (Text entry)
         searchStackView.translatesAutoresizingMaskIntoConstraints = false
         searchStackView.spacing = 8
-//        searchStackView.axis = .horizontal /// Default is horizontal, this is not needed
-        
-        /// Location Button
+                
         locationButton.translatesAutoresizingMaskIntoConstraints = false
         locationButton.setBackgroundImage(UIImage(systemName: "location.circle.fill"), for: .normal)
         locationButton.addTarget(self, action: #selector(locationPressed(_:)), for: .primaryActionTriggered)
         locationButton.tintColor = .label
         
-        /// Search Button
-        searchButton.translatesAutoresizingMaskIntoConstraints = false
-        searchButton.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        /// Call searchPresed() when user presses enter / finishes typing
-        searchButton.addTarget(self, action: #selector(searchPressed(_:)), for: .primaryActionTriggered)
-        searchButton.tintColor = .label
-        
-        /// Search Bar
         searchTextField.translatesAutoresizingMaskIntoConstraints = false
         searchTextField.font = UIFont.preferredFont(forTextStyle: .title1)
-        searchTextField.placeholder = "Search"
+        searchTextField.setContentHuggingPriority(UILayoutPriority(rawValue: 249), for: .horizontal)
+        searchTextField.placeholder = "Enter a City"
         searchTextField.textAlignment = .right
         searchTextField.borderStyle = .roundedRect
         searchTextField.backgroundColor = .systemFill
         
-        /// Weather Image
+        searchButton.translatesAutoresizingMaskIntoConstraints = false
+        searchButton.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
+        searchButton.addTarget(self, action: #selector(searchPressed(_:)), for: .primaryActionTriggered)
+        searchButton.tintColor = .label
+
+        // Weather Conditions
         conditionImageView.translatesAutoresizingMaskIntoConstraints = false
         conditionImageView.image = UIImage(systemName: "sun.max")
         conditionImageView.tintColor = .label
         
-        /// Temp & City Labels
+        // Temperature Label
         temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
         temperatureLabel.font = UIFont.systemFont(ofSize: 80)
-        temperatureLabel.attributedText = makeTemperatureText(with: "20")
+        temperatureLabel.attributedText = makeTemperatureText(with: "21")
         
+        // City Label
         cityLabel.translatesAutoresizingMaskIntoConstraints = false
         cityLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         cityLabel.text = "Lansing"
-        
+
+        // Background Image
+        backgroundView.translatesAutoresizingMaskIntoConstraints = false
+        backgroundView.image = UIImage(named: "background")
+        backgroundView.contentMode = .scaleAspectFill
     }
     
     private func makeTemperatureText(with temperature: String) -> NSAttributedString {
-        /// Creating dictionary of key:value pairs and then setting properties on attributed text
+        
         var boldTextAttributes = [NSAttributedString.Key: AnyObject]()
         boldTextAttributes[.foregroundColor] = UIColor.label
         boldTextAttributes[.font] = UIFont.boldSystemFont(ofSize: 100)
-        
+
         var plainTextAttributes = [NSAttributedString.Key: AnyObject]()
         plainTextAttributes[.font] = UIFont.systemFont(ofSize: 80)
-        
-        let text = NSMutableAttributedString(string: temperature, attributes: boldTextAttributes)
-        text.append(NSAttributedString(string:"ºC", attributes: plainTextAttributes))
-        
-        return text
+
+        let weatherText = NSMutableAttributedString(string: temperature, attributes: boldTextAttributes)
+        weatherText.append(NSAttributedString(string: "°C", attributes: plainTextAttributes))
+
+        return weatherText
     }
     
-    func layout(){
-        
-        view.addSubview(backgroundView)
-        view.addSubview(rootStackView)
-        view.addSubview(searchStackView)
-        view.addSubview(locationButton)
-        view.addSubview(searchButton)
-        view.addSubview(searchTextField)
-
-        rootStackView.addArrangedSubview(searchStackView) /// Stack view embedded in another UIStackView
-        rootStackView.addArrangedSubview(conditionImageView)
-        rootStackView.addArrangedSubview(temperatureLabel)
-        rootStackView.addArrangedSubview(cityLabel)
-        rootStackView.addArrangedSubview(temperatureLabel)
-         
+    func configureLayout() {
         searchStackView.addArrangedSubview(locationButton)
         searchStackView.addArrangedSubview(searchTextField)
         searchStackView.addArrangedSubview(searchButton)
         
+        rootStackView.addArrangedSubview(searchStackView)
+        rootStackView.addArrangedSubview(conditionImageView)
+        rootStackView.addArrangedSubview(temperatureLabel)
+        rootStackView.addArrangedSubview(cityLabel)
+        
+        view.addSubview(backgroundView)
+        view.addSubview(rootStackView)
+       
         NSLayoutConstraint.activate([
+            rootStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            rootStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: rootStackView.trailingAnchor, multiplier: 1),
+            
+            searchStackView.leadingAnchor.constraint(equalTo: rootStackView.leadingAnchor),
+            
+            locationButton.heightAnchor.constraint(equalToConstant: LocalSpacing.buttonSizeSmall),
+            locationButton.widthAnchor.constraint(equalToConstant: LocalSpacing.buttonSizeSmall),
+            
+            searchButton.heightAnchor.constraint(equalToConstant: LocalSpacing.buttonSizeSmall),
+            searchButton.widthAnchor.constraint(equalToConstant: LocalSpacing.buttonSizeSmall),
+            
+            conditionImageView.heightAnchor.constraint(equalToConstant: LocalSpacing.buttonSizelarge),
+            conditionImageView.widthAnchor.constraint(equalToConstant: LocalSpacing.buttonSizelarge),
+
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             backgroundView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            
-            /// Settings applied to stack views to avoid adding individual constraints to child UI elements
-            rootStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            rootStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: rootStackView.trailingAnchor, multiplier: 1),
-            searchStackView.widthAnchor.constraint(equalTo: rootStackView.widthAnchor),
-            
-            locationButton.widthAnchor.constraint(equalToConstant: 40),
-            locationButton.heightAnchor.constraint(equalToConstant: 40),
-
-            searchButton.widthAnchor.constraint(equalToConstant: 40),
-            searchButton.heightAnchor.constraint(equalToConstant: 40),
-            
-            conditionImageView.heightAnchor.constraint(equalToConstant: 120),
-            conditionImageView.widthAnchor.constraint(equalToConstant: 120)
-            
         ])
-        
     }
 }
 
-// MARK: UITextFieldDelegate
+// MARK: - UITextFieldDelegate
 
 extension WeatherViewController: UITextFieldDelegate {
-
+    
     @objc func searchPressed(_ sender: UIButton) {
         searchTextField.endEditing(true)
     }
@@ -172,7 +160,7 @@ extension WeatherViewController: UITextFieldDelegate {
         if textField.text != "" {
             return true
         } else {
-            textField.placeholder = "Type something"
+            textField.placeholder = "Enter a location"
             return false
         }
     }
@@ -182,11 +170,13 @@ extension WeatherViewController: UITextFieldDelegate {
         if let city = searchTextField.text {
             weatherService.fetchWeather(cityName: city)
         }
+        
         searchTextField.text = ""
     }
 }
 
 // MARK: - CLLocationManagerDelegate
+
 extension WeatherViewController: CLLocationManagerDelegate {
     
     @objc func locationPressed(_ sender: UIButton) {
@@ -198,7 +188,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             locationManager.stopUpdatingLocation()
             let lat = location.coordinate.latitude
             let lon = location.coordinate.longitude
-            //weatherService.fetchWeather(latitude: lat, longitude: lon)
+            weatherService.fetchWeather(latitude: lat, longitude: lon)
         }
     }
     
@@ -207,16 +197,43 @@ extension WeatherViewController: CLLocationManagerDelegate {
     }
 }
 
-// Mark: - WeatherServiceDelegate
+// MARK: - WeatherManagerDelegate
 
 extension WeatherViewController: WeatherServiceDelegate {
     
-    func didFetchWeather(_ weatherService: WeatherService, weather: Weather) {
-        /// Update UI when weather is retreived
-        cityLabel.text = weather.cityName
-        temperatureLabel.attributedText = makeTemperatureText(with: weather.temperatureString)
+    func didFetchWeather(_ weatherService: WeatherService, _ weather: WeatherModel) {
+        self.temperatureLabel.attributedText = self.makeTemperatureText(with: weather.temperatureString)
+        self.conditionImageView.image = UIImage(systemName: weather.conditionName)
+        self.cityLabel.text = weather.cityName
     }
     
+    func didFailWithError(_ weatherService: WeatherService, _ error: ServiceError) {
+        let message: String
+        
+        switch error {
+        case .network(statusCode: let statusCode):
+            message = "[Error] Status code: \(statusCode)."
+        case .parsing:
+            message = "[Error] JSON weather data could not be parsed."
+        case .general(reason: let reason):
+            message = reason
+        }
+        showErrorAlert(with: message)
+    }
     
-    
+    func showErrorAlert(with message: String) {
+        let alert = UIAlertController(title: "Error fetching weather from open sky network.",
+                                      message: message,
+                                      preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+}
+
+
+private struct LocalSpacing {
+    static let buttonSizeSmall = CGFloat(44)
+    static let buttonSizelarge = CGFloat(120)
 }
