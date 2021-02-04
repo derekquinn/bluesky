@@ -12,6 +12,8 @@
 - JSON Parsing with Codable
 - Swift Unit Testing _TDD!!_
 - Styling text with NSAttributedString _easy and efficent!_ 
+- Automatic retrieval of user location via `CoreLocation`
+- Allow users to manually search for a weather report using `UITextFieldDelegate`
 
 ## Benefits of the techniques used here
 
