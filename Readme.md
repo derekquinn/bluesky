@@ -9,7 +9,7 @@
 - No storyboards! 
 - Stack Views
 - Protocol-Delegate Pattern
-- JSON Parsing with Codable
+- JSON Parsing with `Codable`
 - Swift Unit Testing _TDD!!_
 - Styling text with NSAttributedString _easy and efficent!_ 
 - Automatic retrieval of user location via `CoreLocation`
