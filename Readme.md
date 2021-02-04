@@ -42,3 +42,15 @@ In order to accomplish this, we define a protocol called `didFetchWeateher` (imp
 Second, we have to register a callback (delegate) for the protocol. This way, when `fetchWeather()` is called, 
 it has an instance (reference) via the delegate.  It can pass the weather object, and therefore update the UI.
 
+## A note on (the wonderful) Codable
+### Decoding
+- Codable is the bridge between JSON and swift.  Say we have JSON coming in from an API representing Weather data. We can convert this JSON into a `struct` by 
+defining a `struct` that matches the incoming JSON.  Then, all we need to do is use the `JSONDecoder` to decode the json, which matches the `Weather` type. The 
+JSON is **decoded** into a swift construct that we can access within our codebase. This is typically used to GET data fro man API. 
+
+### Encoding
+- We can go from Swift to JSON by using the `JSONEncoder`. This process is essentially decoding in reverse, as we can go from a struct to JSON. This is used to send data TO an API using POST or PUT for example. 
+
+### Coding Keys
+- For a developer like myself, who only uses camelCase in Swift files, sometimes JSON data with `snake_case` presents a threat to my coding style.  `CodingKeys` bridge how we would like to represent data in Swift, with how it is coming in from JSON. `CodingKeys` are nothing more than a creative use for `enum`. 
+
