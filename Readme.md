@@ -10,10 +10,12 @@
 - Stack Views
 - Protocol-Delegate Pattern
 - JSON Parsing with `Codable`
+- HTTP URLSession
 - Swift Unit Testing _TDD!!_
 - Styling text with NSAttributedString _easy and efficent!_ 
 - Automatic retrieval of user location via `CoreLocation`
 - Allow users to manually search for a weather report using `UITextFieldDelegate`
+- Error Handling
 
 ## Benefits of the techniques used here
 
