@@ -54,3 +54,14 @@ JSON is **decoded** into a swift construct that we can access within our codebas
 ### Coding Keys
 - For a developer like myself, who only uses camelCase in Swift files, sometimes JSON data with `snake_case` presents a threat to my coding style.  `CodingKeys` bridge how we would like to represent data in Swift, with how it is coming in from JSON. `CodingKeys` are nothing more than a creative use for `enum`. 
 
+## The Importance Testing (Swift Unit Tests)
+- Lots of things can go wrong in an application like this, for example JSON parsing exceptions.  Unit tests can help reassure the product owner that the software is stable, even after major feature additions.  Everyone likes avoiding bugs in prod! 
+
+### What is a Unit Test? 
+- Unit tests are small method-level tests that developers write to prove to themselves that the code is working as expected. 
+
+### Advantages of Unit Testing
+1. **Instant Feedback** - when a developer makes changes to the code, a failing (or passing) test allows us to know instantly if changes have broken some piece of the codebase. 
+1. **Lower the cost of regression testing** - Instead of testing the entire app, we can focus on testing new features and leave the rest to automation. Of course, this depends on well written tests covering a large portion of the codebase.
+1. **Decrease Debugging Time** - When a unit test fails, we know exactly where to look for a problem. No more firing up the debugger, and stepping through thousands of lines of code.
+1. **Deploy with Confidence** - Let's be honest, it just feels good to see a suite of well written unit tests passing before deployment. Humans can focus on testing the more complex features and user experience. 
