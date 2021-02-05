@@ -1,18 +1,8 @@
 import Foundation
 import CoreLocation
 
-enum ServiceError: Error {
-    case network(statusCode: Int)
-    case parsing
-    case general(reason: String)
-}
-
-protocol WeatherServiceDelegate: AnyObject {
-    func didFetchWeather(_ weatherService: WeatherService, _ weather: WeatherModel)
-    func didFailWithError(_ weatherService: WeatherService, _ error: ServiceError)
-}
-
 struct WeatherService {
+    
     var delegate: WeatherServiceDelegate?
     
     let weatherURL = URL(string: "https://api.openweathermap.org/data/2.5/weather?appid=64b098cbb61108df96fc7a0864dd5e4a&units=metric")!
@@ -32,15 +22,15 @@ struct WeatherService {
         let urlString = "\(weatherURL)&lat=\(latitude)&lon=\(longitude)"
         performRequest(with: urlString)
     }
-
+    
     func performRequest(with urlString: String) {
         let url = URL(string: urlString)!
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-
+            
             guard let unwrapedData = data,
                   let httpResponse = response as? HTTPURLResponse
             else { return }
-
+            
             guard error == nil else {
                 DispatchQueue.main.async {
                     let generalError = ServiceError.general(reason: "Check network availability.")
@@ -55,7 +45,7 @@ struct WeatherService {
                 }
                 return
             }
-
+            
             guard let weather = self.parseJSON(unwrapedData) else { return }
             
             DispatchQueue.main.async {
@@ -82,4 +72,15 @@ struct WeatherService {
         
         return weather
     }
+}
+
+enum ServiceError: Error {
+    case network(statusCode: Int)
+    case parsing
+    case general(reason: String)
+}
+
+protocol WeatherServiceDelegate: AnyObject {
+    func didFetchWeather(_ weatherService: WeatherService, _ weather: WeatherModel)
+    func didFailWithError(_ weatherService: WeatherService, _ error: ServiceError)
 }
