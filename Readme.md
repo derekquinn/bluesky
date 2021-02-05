@@ -7,7 +7,7 @@
 ## What's Inside?
 
 - No storyboards! 
-- Dynamic retina enabled background images. 
+- Dynamic retina enabled background images
 - Stack Views
 - Protocol-Delegate Pattern
 - JSON Parsing with `Codable`
