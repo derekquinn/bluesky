@@ -89,6 +89,11 @@ extension WeatherViewController {
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
         backgroundView.image = UIImage(named: "background")
         backgroundView.contentMode = .scaleAspectFill
+        // Create a back view with color and alpha you need
+        let backView = UIView(frame: backgroundView.bounds)
+        backView.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.3)
+        backgroundView.addSubview(backView)
+        backgroundView.alpha = 0.3
     }
     
     private func makeTemperatureText(with temperature: String) -> NSAttributedString {
@@ -205,6 +210,9 @@ extension WeatherViewController: WeatherServiceDelegate {
         self.temperatureLabel.attributedText = self.makeTemperatureText(with: weather.temperatureString)
         self.conditionImageView.image = UIImage(systemName: weather.conditionName)
         self.cityLabel.text = weather.cityName
+        /// Dynamic background
+        self.backgroundView.image = UIImage(named: weather.backgroundImage)
+        print("DEBUG - background image = \(weather.backgroundImage)")
     }
     
     func didFailWithError(_ weatherService: WeatherService, _ error: ServiceError) {
