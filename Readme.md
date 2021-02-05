@@ -3,9 +3,11 @@
 
 ### Blue Sky is a weather application built using best practices with Swift 5, UIKit and XCode 12.  Blue Sky demonstrates scalable, reusable code that is easily reviewed by peers. 
 
+
 ## What's Inside?
 
 - No storyboards! 
+- Dynamic retina enabled background images. 
 - Stack Views
 - Protocol-Delegate Pattern
 - JSON Parsing with `Codable`
