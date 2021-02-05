@@ -30,4 +30,26 @@ struct WeatherModel {
         }
     }
     
+    var backgroundImage: String {
+        switch conditionId {
+        
+        case 200...232:
+            return "rain"
+        case 300...321:
+            return "lightning"
+        case 500...531:
+            return "rain"
+        case 600...622:
+            return "snow"
+        case 701...781:
+            return "foggy"
+        case 800:
+            return "sunny"
+        case 801...804:
+            return "lightning"
+        default:
+            return "clouds"
+        }
+    }
+    
 }
