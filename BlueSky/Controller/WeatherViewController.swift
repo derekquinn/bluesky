@@ -1,5 +1,6 @@
 import UIKit
 import CoreLocation
+import QuartzCore
 
 class WeatherViewController: UIViewController {
     
@@ -18,7 +19,7 @@ class WeatherViewController: UIViewController {
     let conditionImageView = UIImageView()
     let temperatureLabel = UILabel()
     let cityLabel = UILabel()
-
+    
     // UI Element: Background image
     let backgroundView = UIImageView()
     
@@ -27,8 +28,9 @@ class WeatherViewController: UIViewController {
         setupDelegates()
         setStyles()
         configureLayout()
+        self.locationPressed(locationButton)
     }
- 
+    
 }
 
 extension WeatherViewController {
@@ -47,11 +49,11 @@ extension WeatherViewController {
         rootStackView.axis = .vertical
         rootStackView.alignment = .trailing
         rootStackView.spacing = 10
-
+        
         // Search (Text entry)
         searchStackView.translatesAutoresizingMaskIntoConstraints = false
         searchStackView.spacing = 8
-                
+        
         locationButton.translatesAutoresizingMaskIntoConstraints = false
         locationButton.setBackgroundImage(UIImage(systemName: "location.circle.fill"), for: .normal)
         locationButton.addTarget(self, action: #selector(locationPressed(_:)), for: .primaryActionTriggered)
@@ -69,25 +71,21 @@ extension WeatherViewController {
         searchButton.setBackgroundImage(UIImage(systemName: "magnifyingglass"), for: .normal)
         searchButton.addTarget(self, action: #selector(searchPressed(_:)), for: .primaryActionTriggered)
         searchButton.tintColor = .label
-
+        
         // Weather Conditions
         conditionImageView.translatesAutoresizingMaskIntoConstraints = false
-        conditionImageView.image = UIImage(systemName: "sun.max")
         conditionImageView.tintColor = .label
         
         // Temperature Label
         temperatureLabel.translatesAutoresizingMaskIntoConstraints = false
         temperatureLabel.font = UIFont.systemFont(ofSize: 80)
-        temperatureLabel.attributedText = makeTemperatureText(with: "21")
         
         // City Label
         cityLabel.translatesAutoresizingMaskIntoConstraints = false
         cityLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        cityLabel.text = "Lansing"
-
+        
         // Background Image
         backgroundView.translatesAutoresizingMaskIntoConstraints = false
-        backgroundView.image = UIImage(named: "background")
         backgroundView.contentMode = .scaleAspectFill
         // Create a back view with color and alpha you need
         let backView = UIView(frame: backgroundView.bounds)
@@ -101,13 +99,13 @@ extension WeatherViewController {
         var boldTextAttributes = [NSAttributedString.Key: AnyObject]()
         boldTextAttributes[.foregroundColor] = UIColor.label
         boldTextAttributes[.font] = UIFont.boldSystemFont(ofSize: 100)
-
+        
         var plainTextAttributes = [NSAttributedString.Key: AnyObject]()
         plainTextAttributes[.font] = UIFont.systemFont(ofSize: 80)
-
+        
         let weatherText = NSMutableAttributedString(string: temperature, attributes: boldTextAttributes)
         weatherText.append(NSAttributedString(string: "°C", attributes: plainTextAttributes))
-
+        
         return weatherText
     }
     
@@ -123,7 +121,7 @@ extension WeatherViewController {
         
         view.addSubview(backgroundView)
         view.addSubview(rootStackView)
-       
+        
         NSLayoutConstraint.activate([
             rootStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             rootStackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
@@ -139,7 +137,7 @@ extension WeatherViewController {
             
             conditionImageView.heightAnchor.constraint(equalToConstant: LocalSpacing.buttonSizelarge),
             conditionImageView.widthAnchor.constraint(equalToConstant: LocalSpacing.buttonSizelarge),
-
+            
             backgroundView.topAnchor.constraint(equalTo: view.topAnchor),
             backgroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             backgroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -210,8 +208,15 @@ extension WeatherViewController: WeatherServiceDelegate {
         self.temperatureLabel.attributedText = self.makeTemperatureText(with: weather.temperatureString)
         self.conditionImageView.image = UIImage(systemName: weather.conditionName)
         self.cityLabel.text = weather.cityName
+        
         /// Dynamic background
-        self.backgroundView.image = UIImage(named: weather.backgroundImage)
+        UIView.transition(with: backgroundView,
+                          duration: 0.75,
+                          options: .transitionCrossDissolve,
+                          animations: { self.backgroundView.image = UIImage(named: weather.backgroundImage) },
+                          completion: nil)
+        
+        //self.backgroundView.image = UIImage(named: weather.backgroundImage)
         print("DEBUG - background image = \(weather.backgroundImage)")
     }
     
@@ -233,7 +238,7 @@ extension WeatherViewController: WeatherServiceDelegate {
         let alert = UIAlertController(title: "Error fetching weather from open sky network.",
                                       message: message,
                                       preferredStyle: .alert)
-
+        
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
         self.present(alert, animated: true, completion: nil)
