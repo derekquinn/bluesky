@@ -65,18 +65,10 @@
 		C401DDA025CB7CA100F86C93 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C401DDA325CB7D1600F86C93 /* WeatherService.swift */,
 				C401DDB625CB86C900F86C93 /* Weather.swift */,
 				C401DDBA25CB880000F86C93 /* WeatherData.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		C401DDA125CB7CB400F86C93 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		C401DDA225CB7CBC00F86C93 /* Controller */ = {
@@ -126,8 +118,8 @@
 		C41B512325CB464E0050259D /* BlueSky */ = {
 			isa = PBXGroup;
 			children = (
+				C4F9A19425CD071F002910F5 /* Services */,
 				C401DDA225CB7CBC00F86C93 /* Controller */,
-				C401DDA125CB7CB400F86C93 /* View */,
 				C401DDA025CB7CA100F86C93 /* Model */,
 				C41B512425CB464E0050259D /* AppDelegate.swift */,
 				C41B512D25CB46500050259D /* Assets.xcassets */,
@@ -135,6 +127,14 @@
 				C41B513225CB46500050259D /* Info.plist */,
 			);
 			path = BlueSky;
+			sourceTree = "<group>";
+		};
+		C4F9A19425CD071F002910F5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C401DDA325CB7D1600F86C93 /* WeatherService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -437,12 +437,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = CH8XJS4375;
 				INFOPLIST_FILE = BlueSky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.derekquinn.BlueSky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -456,12 +458,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = CH8XJS4375;
 				INFOPLIST_FILE = BlueSky/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 0.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.derekquinn.BlueSky;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
