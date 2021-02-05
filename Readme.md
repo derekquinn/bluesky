@@ -5,7 +5,6 @@
 
 ## What's Inside?
 
-- Vectorized assets
 - No storyboards! 
 - Stack Views
 - Protocol-Delegate Pattern
